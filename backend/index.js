@@ -23,7 +23,7 @@ const connectToDB=async()=>{
 
 dotenv.config();
 app.use(express.json());
-app.use(cors({origin:"https://deploy-test-gamma-nine.vercel.app/",
+app.use(cors({origin:"",
 methods:"GET,HEAD,PUT,POST,DELETE"
 ,credentials:true}))
 app.use(cookieParser());
