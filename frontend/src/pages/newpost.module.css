@@ -1,0 +1,45 @@
+.input{
+    width: 100%;
+    padding: 18px 20px;
+    margin: 8px 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: aliceblue;
+    background-color: rgb(28, 35, 60);
+    display: inline-block;
+    border: none;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.titletxt{
+    font-weight: bolder;
+    background-image: linear-gradient(30deg, #ff62bb, #420ef0,rgb(0, 200, 255));
+    color: transparent;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 2rem;
+}
+
+.button{
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, rgb(247, 88, 155) , rgb(82, 54, 220));
+
+}
+.title{
+    font-weight: bolder;
+    background-image: linear-gradient(30deg, #ff62bb, #420ef0,rgb(0, 200, 255));
+    color: transparent;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 2rem;   
+}
+.info{
+    padding-left: 1rem;
+    font-size: 1rem;
+    color: rgb(186, 243, 250);
+    font-weight: bold;
+}

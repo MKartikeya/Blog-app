@@ -1,0 +1,36 @@
+.gradienttext{
+    font-weight: bolder;
+    font-size:xxx-large;
+    background-image: linear-gradient(60deg,rgb(0, 200, 255),blueviolet,blue,red,pink);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 1rem;
+}
+.dates{
+    color: rgb(250, 186, 204);
+    font-size: 1rem;
+    font-weight: bolder;
+}
+.author{
+    color: bisque;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+.desc{
+    font-size: 1.25rem;
+    color: rgb(184, 202, 218);
+}
+@media screen and (max-width: 1000px){
+    .desc{
+        font-size: 1rem;
+    }
+    .gradienttext{
+        font-size: x-large;
+    }
+    .author{
+        font-size: large;
+    }
+    
+}

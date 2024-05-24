@@ -1,0 +1,131 @@
+.outer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0a0a0b;
+    /* box-shadow: 0px 0px 20px 4px rgba(29, 29, 75, 0.707); */
+    height: 10vh;
+    /* border-radius: 2rem; */
+}
+.mainname{
+        /* font-family: "Nunito", sans-serif; */
+        font-weight: bolder;
+        background-image: linear-gradient(30deg, #d400ff, #420ef0,rgb(0, 200, 255));
+        background-size: 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        padding: 1rem;
+        font-size: 2rem;
+        padding-left: 10vw;
+        /* Optional text shadow for outline (adjust as needed) */
+}
+
+.searchbar{
+    background-color: rgb(46, 46, 64);
+    border: none;
+    border-radius: 1rem;
+    font-weight: bolder;
+    padding: 1rem;
+    width: 15vw;
+    color: rgba(240, 248, 255, 0.578);
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 25rem;
+    max-width: 20vw;
+}
+.searchbar2{
+    background-color: rgb(46, 46, 64);
+    border: none;
+    border-radius: 1rem;
+    font-weight: bolder;
+    padding: 0.75rem;
+    width: 15vw;
+    color: rgba(240, 248, 255, 0.578);
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: none;
+    min-width: 70vw;
+    max-width: 200px;
+}
+.links{
+    font-size: 1.75rem;
+    font-weight: bolder;
+    margin-right: 10rem;
+    padding-right: 2rem;
+    background-image: linear-gradient(45deg, #420ef0,rgb(0, 200, 255));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;    margin-right: 2rem;
+}
+.homelinks{
+    font-size: 1.75rem;
+    font-weight: bolder;
+    margin-right: 10rem;
+    padding-right: 2rem;
+    background-image: linear-gradient(45deg, #420ef0,rgb(0, 200, 255));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;    margin-right: 2rem;
+}
+
+.links:hover,.homelinks:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.sicon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1300px){
+    .homelinks{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1100px){
+
+    .searchbar{
+        display: none;
+    }
+    .searchbar2{
+        display: flex;
+        min-width: 50vw;
+    }
+    .sicon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        right: 20.5rem;
+    }
+    .links{
+        margin-right: 1rem;
+    }
+    
+}
+
+@media screen and (max-width: 800px){
+    .searchbar{
+        display: none;
+    }
+    .searchbar2{
+        min-width: 70vw ;
+    }
+    .sicon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        right: 6.5rem;
+    }
+}
