@@ -24,7 +24,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://deploy-test-gamma-nine.vercel.app/",
+    origin: "https://deploy-test-gamma-nine.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
