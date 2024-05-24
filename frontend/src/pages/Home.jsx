@@ -48,7 +48,7 @@ const Home = () => {
             minHeight: '100vh',
             backgroundColor: "rgb(15,18, 23)"
         }}>
-            <NavBar />
+            {/* <NavBar /> */}
             <div className="px-8 md:px-[200px]">
                 {isLoading ? <Loader /> : !noPosts ? posts.map((post) => (
                     <div key={post._id}>

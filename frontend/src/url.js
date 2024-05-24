@@ -1,2 +1,2 @@
-export const URL="http://localhost:5000"
+export const URL="https://deploy-test-server-gules.vercel.app/"
 export const IF=import.meta.env.VITE_IF
