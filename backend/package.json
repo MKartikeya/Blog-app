@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy":"https://deploy-test-gamma-nine.vercel.app",
   "scripts": {
     "start": "node index.js",
     "start-dev": "nodemon index.js",
