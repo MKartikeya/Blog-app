@@ -26,7 +26,8 @@ app.use(express.json());
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: "https://deploy-test-gamma-nine.vercel.app",
+    // origin: "https://deploy-test-gamma-nine.vercel.app",
+    origin: "https://blog-app-1-5xa8.onrender.com",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
