@@ -26,7 +26,7 @@ const Comment = ({ c,post }) => {
             Swal.fire("Comment Deleted!", "", "success");
             navigate("/posts/post/"+post._id)
 
-            // window.location.reload();
+            window.location.reload();
             // navigate("/posts/post/"+post._id)
                 } else if (result.isDenied) {
                     Swal.fire("Delete Cancelled", "", "info");
@@ -61,8 +61,8 @@ const Comment = ({ c,post }) => {
                 if (result.isConfirmed) {
                     try{
                         const res = await axios.put(URL + "/api/comments/"+comment._id, { comment: newcom, postId: post._id, author: user.username, userId: user._id }, { withCredentials: true })
-                        // window.location.reload();
-                        navigate("/posts/post/"+post._id);
+                        window.location.reload();
+                        // navigate("/posts/post/"+post._id);
                         Swal.fire("Updated!", "", "success");
                     } catch(err){
                         Swal.fire("Some error occurred", "", "error");
