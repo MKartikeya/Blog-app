@@ -10,10 +10,23 @@ export function UserContextProvider({children}){
         getUser();
     },[]);
     const getUser=async()=>{
-        try{
-            const res= await axios.get(URL+"/api/auth/refetch",{withCredentials:true});
-            console.log(res.data);  
-            setUser(res.data);
+        // try{
+
+        //     const res= await axios.get(URL+"/api/auth/refetch",{withCredentials:true});
+        //     console.log(res.data);  
+        //     setUser(res.data);
+
+        // } catch(err){
+        //     console.log(err);
+        // }
+        try {
+            //getting user from local storage
+        const use = JSON.parse(localStorage.getItem("user"));
+        if (use) {
+            setUser(use);
+        }
+        //fetching  user details
+
 
         } catch(err){
             console.log(err);

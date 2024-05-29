@@ -1,6 +1,6 @@
 import React from 'react';
 import {IF} from '../url'
-import styles from './homepost.module.css'
+import styles from "../css/homepost.module.css"
 const BigHomePosts = ({post}) => {
     return ( 
         <div style={{

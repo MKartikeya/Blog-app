@@ -7,6 +7,7 @@ const authRounter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comment");
+const textGenerationRouter = require("./routes/textGeneration");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
@@ -24,6 +25,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
   cors({
+    // origin: "http://localhost:5173",
     origin: "https://deploy-test-gamma-nine.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
@@ -33,6 +35,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRounter);
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
+app.use("/api/text", textGenerationRouter);
 app.use("/api/comments", commentRouter);
 app.use("/images", express.static(path.join(__dirname, "/images")));
 

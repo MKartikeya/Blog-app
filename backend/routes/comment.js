@@ -13,7 +13,6 @@ router.post("/create",async(req,res)=>{
         const saved = await newComment.save();
         res.status(200).json(saved);
     } catch(err) {
-      console.log("here");
         res.status(500).json(err);
     }
 });
@@ -41,7 +40,6 @@ router.delete("/:id", async (req, res) => {
     await Comment.findByIdAndDelete(req.params.id);
     res.status(200).json("Comment has been deleted");
   } catch (err) {
-    console.log("here");
     res.status(500).json(err);
   }
 });
@@ -63,7 +61,6 @@ router.get("/post/:postId", async (req, res) => {
     const comments = await Comment.find({postId:req.params.postId});
     res.status(200).json(comments);
   } catch (err) {
-    console.log("here");
     res.status(500).json(err);
   }
 });
@@ -74,7 +71,6 @@ router.get("/user/:userId", async (req, res) => {
     const posts = await Comment.find({userId:req.params.userId});
     res.status(200).json(posts);
   } catch (err) {
-    console.log("here");
     res.status(500).json(err);
   }
 });

@@ -4,7 +4,7 @@ import { BsSearch } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 import { UserContext } from '../context/UserContext';
 import Menu from './Menu';
-import styles from './navbar.module.css';
+import styles from '../css/navbar.module.css';
 
 
 const NavBar = () => {
@@ -13,7 +13,6 @@ const NavBar = () => {
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
     const loc = useLocation().pathname;
-    console.log(user)
     const showMenu = () => {
         setMenu(!menu);
     }

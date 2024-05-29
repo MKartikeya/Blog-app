@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import styles from "./login.module.css"; // Import the CSS module
+import styles from "../css/login.module.css"; // Import the CSS module
 import NavBar from "../components/Navbar";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import { URL } from "../url";
+import Swal from "sweetalert2";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,19 +20,44 @@ const Login = () => {
         }
     }, [user]);
 
+    //function to write into localstorage
+    const writeLocalStorage = (user) => {
+        localStorage.setItem("user", JSON.stringify(user));
+    };
+
+
     const handleLogin = async () => {
         try {
-            console.log(email);
-            console.log(password);
             const res = await axios.post(URL + "/api/auth/login", { email, password }, { withCredentials: true });
             setUser(res.data);
-            console.log(res);
+            writeLocalStorage(res.data);
             setEmail(res.data.email);
             setPassword(res.data.password);
             setError(false);
             navigate("/");
         }
         catch (err) {
+            if (err.response.status === 404) {
+                Swal.fire({
+                    background: "#1a1a1a",
+                    color: "white",
+                    icon: "error",
+                    title: "User not found",
+                    text: "User not found",
+                });
+
+                console.log("User not found");
+            } else if (err.response.status === 401) {
+                Swal.fire({
+                    background: "#1a1a1a",
+                    icon: "error",
+                    title: "Invalid credentials",
+                    text: "Invalid credentials",
+                });
+
+                console.log("Invalid credentials");
+            }
+
             setError(true);
             console.log(err);
         }
@@ -121,7 +147,7 @@ const Login = () => {
 
 
                         </div>
-                        <button onClick={() => navigate("/")} className={styles.gohome}><Link className={styles.nounderline} to="/"> Go back Home</Link></button>
+                        <button onClick={() => navigate("/")} className={styles.gohome}><Link style={{textDecoration:"none"}} to="/"> Go back Home</Link></button>
 
                     </form>
                 </div>

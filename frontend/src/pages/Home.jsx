@@ -13,20 +13,27 @@ import BigHomePosts from '../components/BigHomePost';
 const Home = () => {
     const { search } = useLocation();
     const {user} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
 
     const [posts, setPosts] = useState([]);
     const [noPosts, setNoPosts] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
     useEffect(() => {
+        
         fetchPosts();
     }, [search]);
+    //fetching user from local storage and setting it to user context
+    // useEffect(() => {
+    //     const user = JSON.parse(localStorage.getItem("user"));
+    //     if (user) {
+    //         setUser(user);
+    //     }
+    // }, []);
 
     const fetchPosts = async () => {
         setIsLoading(true);
         try {
             const res = await axios.get(URL + "/api/posts/" + search);
-            console.log(res.data);
             setPosts(res.data);
             if (res.data.length === 0) {
                 setNoPosts(true);
@@ -57,7 +64,7 @@ const Home = () => {
                             <HomePosts key={post._id} post={post} />
                         </Link>
                     </div>
-                )) : <h1 className="text-2xl font-bold text-center mt-8">No Posts Found</h1>}
+                )) : <h1 className="text-2xl font-bold text-center mt-8 text-white">No Posts Found</h1>}
                 {/* <HomePosts/>
             <HomePosts/>
             <HomePosts/>

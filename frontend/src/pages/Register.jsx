@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom"; // Import useNavigate for navigation
-import styles from "./login.module.css"; // Import the CSS module
 import NavBar from "../components/Navbar";
 import axios from "axios";
 import { URL } from "../url";
+import styles from "../css/login.module.css"; // Import the CSS module
 
 
 const Register = () => {
@@ -20,7 +20,6 @@ const Register = () => {
 
         try {
             const res = await axios.post(URL + "/api/auth/register", { username, email, password })
-            console.log(res)
             setUsername(res.data.username)
             setEmail(res.data.email)
             setPassword(res.data.password)
@@ -110,7 +109,7 @@ const Register = () => {
                                 ><Link className={styles.signuplink} to="/login"> Login</Link></p>
 
                             </div>
-                            <button onClick={() => navigate("/")} className={styles.gohome}><Link className={styles.nounderline} to="/"> Go back Home</Link></button>
+                            <button onClick={() => navigate("/")} className={styles.gohome}><Link style={{textDecoration:"none"}} to="/"> Go back Home</Link></button>
                         </form>
                     </div>
                 </div>

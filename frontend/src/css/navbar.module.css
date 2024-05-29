@@ -18,7 +18,7 @@
         color: transparent;
         padding: 1rem;
         font-size: 2rem;
-        padding-left: 10vw;
+        padding-left: 8.5vw;
         /* Optional text shadow for outline (adjust as needed) */
 }
 
@@ -128,4 +128,8 @@
         position: absolute;
         right: 6.5rem;
     }
+    .mainname{
+        padding-left: 3vw;
+    }
+    
 }

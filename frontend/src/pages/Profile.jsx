@@ -2,12 +2,12 @@ import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
 import React, { useContext, useState, useEffect } from "react";
 import ProfilePost from "../components/ProfilePost";
-import styles from './newpost.module.css'
 import { UserContext } from "../context/UserContext";
 import { useNavigate ,Link} from "react-router-dom";
 import axios from "axios";
 import { URL } from "../url";
 import Swal from "sweetalert2";
+import styles from "../css/newpost.module.css";
 const Profile = () => {
     const { user } = useContext(UserContext);
     const [username, setUsername] = useState("");
@@ -20,7 +20,6 @@ const Profile = () => {
         try {
             const res = await axios.get(URL + "/api/users/" + user._id);
             setUserDetails(res.data);
-            console.log(userDetails);
         }
         catch (err) {
             console.log(err);
@@ -44,15 +43,14 @@ const Profile = () => {
                 title: "Do you want to delete your account?",
                 background: "#1a1a1a",
                 color: "rgba(230, 230, 255, 0.864)",
-                padding: "3rem",
                 showDenyButton: true,
                 confirmButtonText: "Delete",
             }).then(async (result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     const res = await axios.delete(URL + "/api/users/" + user._id, user._id, { withCredentials: true })
-                    console.log(res.data)
                     const res2 = await axios.get(URL + "/api/auth/logout", { withCredentials: true });
+                    localStorage.removeItem("user");
                     setUser(null);
                     //logging out the user
                     // setUser(null);
@@ -70,6 +68,9 @@ const Profile = () => {
 
 
     useEffect(() => {
+        if(!user) {
+            navigate("/login");
+        }
         fetchUser();
         fetchUserBlogs();
     }, [user])
@@ -77,8 +78,11 @@ const Profile = () => {
     const updateProfile = async () => {
         try {
             const res = await axios.put(URL + "/api/users/" + user._id, { username: username, email: email }, { withCredentials: true });
-            console.log(res.data);
             setUser(res.data);
+            const res1= await axios.get(URL+"/api/auth/logout",{withCredentials:true});
+            setUser(null);
+            navigate('/');
+            // window.location.reload()
             Swal.fire("Profile Updated", "", "success");
         }
         catch (err) {

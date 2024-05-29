@@ -1,7 +1,15 @@
 import {IF} from '../url'
-import styles from './homepost.module.css'
+import styles from '../css/homepost.module.css'
+
+const stripHtml = (html) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+};
 const ProfilePost = ({post}) => {
+    const textDescription = stripHtml(post.desc);
     return ( 
+
         <div style={{
             marginTop: "2.5vh",
             marginBottom: "2vh",
@@ -28,7 +36,7 @@ const ProfilePost = ({post}) => {
                         <p className={styles.dates} >{new Date(post.updatedAt).toString().slice(15,21)}</p>
                     </div>
                 </div>
-                <p className={styles.desc}> {post.desc.slice(0,200)+" ..Read more"}</p>
+                <p className={styles.desc}>{textDescription.slice(0, 200) + " ..Read more"}</p>
 
             </div>
 

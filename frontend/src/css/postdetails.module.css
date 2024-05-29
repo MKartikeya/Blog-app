@@ -68,6 +68,7 @@ padding: 1rem;
 @media  screen and (max-width: 1000px){
     .title{
         font-size: 1.75rem;
+        padding-left: 0;
     }
     .author{
         font-size: 1.25rem;

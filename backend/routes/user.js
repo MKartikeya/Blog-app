@@ -33,7 +33,6 @@ router.delete("/:id", async (req, res) => {
     await Comment.deleteMany({userId: req.params.id});
     res.status(200).json("User has been deleted");
   } catch (err) {
-    console.log("here");
     res.status(500).json(err);
   }
 });
@@ -45,7 +44,6 @@ router.get("/:id", async (req, res) => {
     const { password, ...others } = user._doc;
     res.status(200).json(others);
   } catch (err) {
-    console.log("here");
     res.status(500).json(err);
   }
 });

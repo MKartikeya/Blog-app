@@ -5,16 +5,34 @@ import { URL } from "../url";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Comment = ({ c,post }) => {
     const comment = c;
     const {user} = useContext(UserContext)
-    console.log(comment)
+    const navigate = useNavigate();
     const deleteComment = async () => {
         try {
+            Swal.fire({
+                title: "Do you want to delete the comment?",
+                background: "#1a1a1a",
+                color: "rgba(230, 230, 255, 0.864)",
+                showDenyButton: true,
+                confirmButtonText: "Delete",
+            }).then(async (result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
             const res = await axios.delete(URL + "/api/comments/" + comment._id, { withCredentials: true });
-            console.log(res.data);
+            Swal.fire("Comment Deleted!", "", "success");
+            // navigate("/posts/post/"+post._id)
+
             window.location.reload();
+            // navigate("/posts/post/"+post._id)
+                } else if (result.isDenied) {
+                    Swal.fire("Delete Cancelled", "", "info");
+                }
+            }
+            )
         } catch (err) {
             console.log(err);
         }
@@ -35,18 +53,16 @@ const Comment = ({ c,post }) => {
                 title: "Do you want to edit the comment?",
                 background: "#1a1a1a",
                 color: "rgba(230, 230, 255, 0.864)",
-                padding: "3rem",
                 showDenyButton: true,
                 confirmButtonText: "Edit",
-                padding:"1rem"
                 // showCancelButton: true,
             }).then(async (result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     try{
                         const res = await axios.put(URL + "/api/comments/"+comment._id, { comment: newcom, postId: post._id, author: user.username, userId: user._id }, { withCredentials: true })
-                        console.log(res.data)
                         window.location.reload();
+                        // navigate("/posts/post/"+post._id);
                         Swal.fire("Updated!", "", "success");
                     } catch(err){
                         Swal.fire("Some error occurred", "", "error");

@@ -4,9 +4,9 @@ import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 import { URL } from '../url';
-import styles from './footer.module.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import styles from '../css/footer.module.css';
 
 const Menu = () => {
     const {user} = useContext(UserContext);
@@ -19,8 +19,6 @@ const Menu = () => {
                 title: "Do you want to logout?",
                 background: "#1a1a1a",
                 color: "rgba(230, 230, 255, 0.864)",
-                paddingX: "2rem",
-                paddingY: "15rem",
                 showDenyButton: true,
                 denyButtonText: "Cancel",
                 // showCancelButton: true,
@@ -29,7 +27,6 @@ const Menu = () => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     const res= await axios.get(URL+"/api/auth/logout",{withCredentials:true});
-                    console.log(res.data);
                     setUser(null);
                     navigate('/');
                   Swal.fire("Logged Out!", "", "success");
@@ -37,6 +34,9 @@ const Menu = () => {
                   Swal.fire("Logout Cancelled", "", "info");
                 }
               });
+
+              //removing user from local storage
+              localStorage.removeItem("user");
 
         } catch (err){
             console.log(err);

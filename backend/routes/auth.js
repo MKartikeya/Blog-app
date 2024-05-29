@@ -15,7 +15,6 @@ router.post("/register",async(req,res)=>{
             email,
             password:hashedPassword,
         }); 
-        console.log("here");
         const saved=await newUser.save();
         res.status(200).json(saved);
 
@@ -31,7 +30,6 @@ router.post("/login",async(req,res)=>{
     try{
         const user=await User.findOne({email:req.body.email});
         if(!user){
-            console.log("User not found ");
             res.status(404).json("User not found");
         }
         const hasMatched = await bcrypt.compare(req.body.password,user.password);
@@ -64,7 +62,6 @@ router.get("/refetch",async(req,res)=>{
         const token=req.cookies.token;
         const match = await jwt.verify(token,process.env.SECRET_KEY,(err,user)=>{
             if(err){
-                console.log("here");
                 res.status(404).json("Invalid token");
             }
             res.status(200).json(user);
