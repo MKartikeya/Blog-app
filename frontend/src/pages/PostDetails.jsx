@@ -14,6 +14,7 @@ import Loader from '../components/Loader';
 import styles from '../css/postdetails.module.css';
 import Swal from "sweetalert2";
 
+
 const PostDetails = () => {
     const postId = useParams().id;
     const [post, setPost] = useState({});
@@ -133,8 +134,8 @@ const PostDetails = () => {
                         </div>
                     </div>
 
-                    <img src={IF + post.photo} className="w-[90%] mx-auto mt-0 md:mt-8" alt="" />
-                    <div className="flex items-center mt-8 space-x-4 font-semibold">
+                    <img src={IF + post.photo || 'https://www.patterns.dev/img/reactjs/react-logo@3x.svg'} className="w-[90%] mx-auto mt-0 md:mt-8" alt="" />
+                    <div className="flex items-center  mt-2 md:mt-8 mb-3 md:mb-8 space-x-4 font-semibold">
                         <p style={{ color: "white", fontSize: "1.25rem" }}>Categories:</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center items-center">
                             {post.categories && post.categories.map((category, index) => (
@@ -145,9 +146,7 @@ const PostDetails = () => {
                         </div>
 
                     </div>
-                    <div className="mx-auto mt-8 text-lg" style={{ color: "rgb(255,255,255,0.9)", fontWeight: "bold", backgroundColor: "rgb(28, 35, 60)", padding: "2rem", borderRadius: "0.5rem" }}>
-                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc) }} />
-                    </div>
+                    <div className="mb-4 text-left text-white blog-content" style={{ whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: post.desc }} />
                     <div className="flex items-center justify-between mt-4">
                         <h3 className="font-semibold text-xl text-white">Comments:</h3>
                         <button onClick={handleUpvote} className={`flex items-center justify-center space-x-2 p-2 rounded-md ${hasUpvoted ? 'bg-red-500' : 'bg-gray-500'}`}>
