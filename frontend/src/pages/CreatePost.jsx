@@ -63,7 +63,7 @@ const CreatePost = () => {
         try {
             // 
             const response = await axios({
-                url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + meta.env.API_KEY,
+                url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + import.meta.env.API_KEY,
                 method: 'POST',
                 data: {
                     contents: [
